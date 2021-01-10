@@ -10,8 +10,7 @@ This is an edu project within my concept of one-day-project (a pet-project which
 - expression like "Oh, Time..." -> OK
 - a possibility to change the theme (light/dark) -> OK
 - a possibility to update the phrase via reload the page OR directly reload a phrase via AJAX -> OK
-- use Class with methods for the main API file 'index.php'
-- + master (widget) which acquaint users with UI of an app (feature guide)
-- + localization (UI in RUS & ENG)
-- test via data set of years
-- make an API with two methods (in PHP)
+- make an API with two methods (in PHP) -> OK
+- use Class with methods for the main API file 'index.php' (N: defined in Issues)
+- + master (widget) which acquaint users with UI of an app (feature guide; N: defined in Issues)
+- + localization (UI in RUS & ENG; N: defined in Issues)
