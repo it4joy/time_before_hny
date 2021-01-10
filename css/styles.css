@@ -1,0 +1,168 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: #4fffd6;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.container {
+    margin: 0 auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -1rem;
+    margin-left: -1rem;
+}
+
+.col {
+    flex-basis: 0;
+    flex-grow: 1;
+    position: relative;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    max-width: 100%;
+}
+
+body.dark {
+    background-color: lightslategrey;
+    color: #fff;
+}
+
+body.dark .link {
+    color: #fff;
+}
+
+body.dark .btn-outline-default {
+    border-color: #fff;
+    color: #fff;
+}
+
+.app__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: .5rem;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn-outline-default {
+    background-color: transparent;
+    border: 1px solid #333;
+    color: #333;
+}
+.btn-outline-default:hover {
+    opacity: .8;
+}
+.btn-outline-default:focus {
+    outline: none;
+}
+
+.time__wrapper {
+    padding: 1.5rem;
+    font-size: 2.5em;
+}
+
+.phrase__wrapper {
+    position: relative;
+    padding-top: 1.5rem;
+    font-size: 2rem;
+}
+.phrase__wrapper::before,
+.phrase__wrapper::after {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 3rem;
+}
+.phrase__wrapper::before {
+    content: '❝'; /* N: find the mnemonic */
+    position: relative;
+    right: .5rem;
+}
+.phrase__wrapper::after {
+    content: '❞';
+    position: relative;
+    top: 1.75rem;
+    left: .5rem;
+}
+
+.theme-switcher__wrapper {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    padding: .5rem;
+    width: 5rem;
+    height: 3rem;
+    background-color: #fff;
+    border-radius: 1.25rem;
+}
+
+.theme-switcher {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    background-color: #4fffd6;
+    border-radius: 1rem;
+}
+
+body.dark .theme-switcher {
+    right: .5rem;
+    background-color: lightslategrey;
+}
+
+.animated-phrase__wrapper {
+    padding: 3rem 0;
+    font-size: 5rem;
+    opacity: .15;
+}
+
+.footer {
+    padding: 1.5rem 0;
+}
+
+.text-link {
+    text-decoration: none;
+    color: black;
+}
+.text-link:hover {
+    opacity: .5;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
