@@ -68,6 +68,7 @@ timeWrapper.textContent = timeForOutput;
 
 // update the phrase
 const btnUpdPhrase = document.querySelector('.btn-upd-phrase');
+
 btnUpdPhrase.onclick = () => {
     xhr.open('GET', 'http://t-b-hny/api/?action_2=getRandomPhrase');
 
@@ -89,4 +90,37 @@ btnUpdPhrase.onclick = () => {
     xhr.onerror = () => {
         alert('The request is failed...');
     };
+};
+
+// call the features guide
+const tooltip = document.querySelector('.tooltip__wrapper');
+const tooltipText = tooltip.querySelector('.tooltip-text');
+const btnFeatureGuide = document.querySelector('.btn-feature-guide');
+const btnFeatureGuideClose = document.querySelector('.btn-feature-guide-close');
+
+const themeSwitcherCoords = themeSwitcherWrapper.getBoundingClientRect();
+
+const tooltipConfig = {
+    coordsChanging: [themeSwitcherCoords, ],
+    themeSwitcher: {
+        right: parseInt(themeSwitcherCoords.right, 10) - 250,
+        top: parseInt(themeSwitcherCoords.bottom, 10) + 15,
+        text: 'You can toggle a color mode'
+    },
+
+};
+
+btnFeatureGuide.onclick = () => {
+    tooltipText.textContent = tooltipConfig.themeSwitcher.text;
+
+    tooltip.style.left = tooltipConfig.themeSwitcher.right + 'px';
+    tooltip.style.top = tooltipConfig.themeSwitcher.top + 'px';
+
+    tooltip.classList.toggle('d-none');
+    tooltip.classList.toggle('d-flex-col');
+};
+
+btnFeatureGuideClose.onclick = () => {
+    tooltip.classList.toggle('d-none');
+    tooltip.classList.toggle('d-flex-col');
 };

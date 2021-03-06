@@ -5,6 +5,7 @@
 }
 
 html, body {
+    position: relative;
     height: 100%;
     background-color: #4fffd6;
 }
@@ -65,6 +66,27 @@ body.dark .btn-outline-default {
     align-items: center;
     height: 100%;
     text-align: center;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
 }
 
 .btn {
@@ -159,6 +181,26 @@ body.dark .theme-switcher {
 }
 .text-link:hover {
     opacity: .5;
+}
+
+.tooltip__wrapper {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    padding: 1.5rem;
+    width: 250px;
+    height: auto;
+    background-color: #06c;
+    border-radius: 0.5rem;
+    color: #fff;
+}
+
+.btn-couple button {
+    width: 48%;
+}
+
+.tooltip-text {
+    margin-bottom: 1.5rem;
 }
 
 @media (min-width: 1200px) {
