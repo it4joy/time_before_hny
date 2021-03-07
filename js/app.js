@@ -96,31 +96,78 @@ btnUpdPhrase.onclick = () => {
 const tooltip = document.querySelector('.tooltip__wrapper');
 const tooltipText = tooltip.querySelector('.tooltip-text');
 const btnFeatureGuide = document.querySelector('.btn-feature-guide');
+const btnFeatureGuideNext = document.querySelector('.btn-feature-guide-next');
 const btnFeatureGuideClose = document.querySelector('.btn-feature-guide-close');
 
 const themeSwitcherCoords = themeSwitcherWrapper.getBoundingClientRect();
+const btnUpdPhraseCoords = btnUpdPhrase.getBoundingClientRect();
+
+// test => OK
+console.log('height: ' + btnUpdPhraseCoords.height);
+console.log('top: ' + btnUpdPhraseCoords.top);
+
+let isGuideActive = false;
+let stepCounter = 0;
 
 const tooltipConfig = {
     coordsChanging: [themeSwitcherCoords, ],
-    themeSwitcher: {
-        right: parseInt(themeSwitcherCoords.right, 10) - 250,
+    stepFirst: {
+        el: themeSwitcherWrapper,
+        right: parseInt(themeSwitcherCoords.right, 10) - 250, // parseInt perhaps redundant, see fn signature
         top: parseInt(themeSwitcherCoords.bottom, 10) + 15,
-        text: 'You can toggle a color mode'
+        text: 'You can toggle the color mode'
     },
+    stepSecond: {
+        el: btnUpdPhrase,
+        right: parseInt(btnUpdPhraseCoords.right, 10) - 250,
+        top: btnUpdPhraseCoords.top - 100, // ...
+        text: 'Update the phrase about time'
+    },
+};
 
+const setTooltipLocation = (step) => {
+    if (step === 1) {
+        tooltipText.textContent = tooltipConfig.stepFirst.text;
+
+        tooltip.style.left = tooltipConfig.stepFirst.right + 'px';
+        tooltip.style.top = tooltipConfig.stepFirst.top + 'px';
+    } else if (step === 2) {
+        tooltipText.textContent = tooltipConfig.stepSecond.text;
+
+        tooltip.style.left = tooltipConfig.stepSecond.right + 'px';
+        tooltip.style.top = tooltipConfig.stepSecond.top + 'px';
+    }
 };
 
 btnFeatureGuide.onclick = () => {
-    tooltipText.textContent = tooltipConfig.themeSwitcher.text;
+    if (isGuideActive === false) {
+        isGuideActive = true;
+        stepCounter++;
+        // test
+        console.log(stepCounter);
 
-    tooltip.style.left = tooltipConfig.themeSwitcher.right + 'px';
-    tooltip.style.top = tooltipConfig.themeSwitcher.top + 'px';
+        setTooltipLocation(stepCounter);
+    }
 
     tooltip.classList.toggle('d-none');
     tooltip.classList.toggle('d-flex-col');
 };
 
+btnFeatureGuideNext.onclick = () => {
+    stepCounter++;
+    // test
+    console.log(stepCounter);
+
+    setTooltipLocation(stepCounter);
+};
+
 btnFeatureGuideClose.onclick = () => {
+    stepCounter = 0;
+    // set init location
+    setTooltipLocation(1);
+
+    isGuideActive = false;
+    
     tooltip.classList.toggle('d-none');
     tooltip.classList.toggle('d-flex-col');
 };

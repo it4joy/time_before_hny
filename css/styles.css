@@ -102,16 +102,26 @@ body.dark .btn-outline-default {
     cursor: pointer;
 }
 
-.btn-outline-default {
+.btn-outline {
     background-color: transparent;
-    border: 1px solid #333;
-    color: #333;
+    border: 1px solid transparent;
 }
-.btn-outline-default:hover {
+
+.btn-outline:hover {
     opacity: .8;
 }
-.btn-outline-default:focus {
+.btn-outline:focus {
     outline: none;
+}
+
+.btn-outline-default {
+    border-color: #333;
+    color: #333;
+}
+
+.btn-outline-white {
+    border-color: #fff;
+    color: #fff;
 }
 
 .time__wrapper {
