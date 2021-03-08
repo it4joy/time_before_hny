@@ -113,14 +113,14 @@ const tooltipConfig = {
     coordsChanging: [themeSwitcherCoords, ],
     stepFirst: {
         el: themeSwitcherWrapper,
-        right: parseInt(themeSwitcherCoords.right, 10) - 250, // parseInt perhaps redundant, see fn signature
+        right: parseInt(themeSwitcherCoords.right, 10) - 250, // `parseInt()` perhaps redundant, see fn signature
         top: parseInt(themeSwitcherCoords.bottom, 10) + 15,
         text: 'You can toggle the color mode'
     },
     stepSecond: {
         el: btnUpdPhrase,
         right: parseInt(btnUpdPhraseCoords.right, 10) - 250,
-        top: btnUpdPhraseCoords.top - 100, // ...
+        top: btnUpdPhraseCoords.top,
         text: 'Update the phrase about time'
     },
 };
@@ -133,13 +133,17 @@ const setTooltipLocation = (step) => {
         tooltip.style.top = tooltipConfig.stepFirst.top + 'px';
     } else if (step === 2) {
         tooltipText.textContent = tooltipConfig.stepSecond.text;
+        const tooltipTop = tooltipConfig.stepSecond.top - tooltip.offsetHeight - 15;
 
         tooltip.style.left = tooltipConfig.stepSecond.right + 'px';
-        tooltip.style.top = tooltipConfig.stepSecond.top + 'px';
+        tooltip.style.top = tooltipTop + 'px';
     }
 };
 
 btnFeatureGuide.onclick = () => {
+    tooltip.classList.toggle('d-none');
+    tooltip.classList.toggle('d-flex-col');
+    
     if (isGuideActive === false) {
         isGuideActive = true;
         stepCounter++;
@@ -149,8 +153,8 @@ btnFeatureGuide.onclick = () => {
         setTooltipLocation(stepCounter);
     }
 
-    tooltip.classList.toggle('d-none');
-    tooltip.classList.toggle('d-flex-col');
+    //tooltip.classList.toggle('d-none');
+    //tooltip.classList.toggle('d-flex-col');
 };
 
 btnFeatureGuideNext.onclick = () => {
